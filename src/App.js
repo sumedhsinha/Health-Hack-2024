@@ -1,11 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import { getHelloMessage } from './apiService';
+import axios from 'axios';
+
+const API_BASE_URL = 'http://localhost:5000/';
+
 
 function App() {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    getHelloMessage().then((data) => setMessage(data.message));
+    async function fetchData() {
+      const response = await axios.get(`${API_BASE_URL}`);
+      setMessage(response.data);
+    }
+
+    fetchData();
+    return () => {
+      console.log('Cleanup');
+    }
   }, []);
 
   return (
