@@ -12,3 +12,7 @@ Manav Vohra
 Rishabh Dhingra
 Sumedh Sinha
 
+
+To install the library, use the following commands 
+
+npm install @google/generative-ai
