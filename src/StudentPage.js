@@ -24,22 +24,25 @@ function StudentPage() {
 
   return (
     <div className="student-page">
-      <header className="App-header">
-        <h1>Welcome, Student!</h1>
-        <p>This is the student’s dashboard.</p>
+      <header className="student-page-header">
+        <img src="/logo.png" alt="Logo" className="logo" /> {/* Logo from public directory */}
+        
+        <h1 className="title">Welcome, Student!</h1> {/* First text below the logo */}
+        <p className="description">This is the student’s dashboard.</p> {/* Description below the title */}
 
-        <form onSubmit={handleSubmit}> {/* Form element to handle input */}
-          <input
-            type="text"
+        <form onSubmit={handleSubmit} style={{ width: '190%', textAlign: 'center' }}> {/* Full width for input */}
+          <textarea
             value={inputText} // Controlled input
             onChange={(e) => setInputText(e.target.value)} // Update state on input change
             placeholder="Enter your text here" // Placeholder text
             required // Optional: Make the input required
+            className="input-text" // Use a class for styling
           />
-          <button type="submit" className="button">Save</button> {/* Save button */}
+          <div className="button-container">
+            <button type="submit" className="button">Save</button> {/* Save button */}
+            <button type="button" className="button" onClick={() => navigate('/')}>Back to Home</button> {/* Back to Home button */}
+          </div>
         </form>
-
-        <button className="button" onClick={() => navigate('/')}>Back to Home</button>
       </header>
     </div>
   );
