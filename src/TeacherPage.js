@@ -3,40 +3,38 @@ import { useNavigate } from 'react-router-dom';
 
 function TeacherPage() {
   const navigate = useNavigate();
-  const [selectedOption, setSelectedOption] = useState(''); // State for dropdown selection
-  const [ratings, setRatings] = useState(Array(25).fill(null)); // State for each row's rating selection
+  const [selectedOption, setSelectedOption] = useState('');
+  const [ratings, setRatings] = useState(Array(25).fill(null));
 
-  const options = ['Onset', 'Site', 'Duration', 'Radiation', 'Frequency', 'Quality and Character', 'Progression', 'Severity', 'Aggravating and Relieving Factors', 'Associated Symptoms', 'S.O.B. - Exertion', 'S.O.B. - while flat', 'S.O.B at right', 'Palpitations', 'Ankle Swelling', 'Transient Loss of Consciousness', 'Intermittent Claudication', 'Fever, Fatigue', 'Smoking', 'Hypertension', 'DM', 'F.M. of CAD', 'Previous History of CAD', 'Hyperlipedemia', 'Obesity & Physical Inactivity'];
-  
-  // Load saved selections from local storage on mount
+  const options = [
+    'Onset', 'Site', 'Duration', 'Radiation', 'Frequency', 'Quality and Character',
+    'Progression', 'Severity', 'Aggravating and Relieving Factors', 'Associated Symptoms',
+    'S.O.B. - Exertion', 'S.O.B. - while flat', 'S.O.B at right', 'Palpitations', 'Ankle Swelling',
+    'Transient Loss of Consciousness', 'Intermittent Claudication', 'Fever, Fatigue', 'Smoking',
+    'Hypertension', 'DM', 'F.M. of CAD', 'Previous History of CAD', 'Hyperlipidemia',
+    'Obesity & Physical Inactivity'
+  ];
+
   useEffect(() => {
     const savedOption = localStorage.getItem('teacherSelection');
     const savedRatings = localStorage.getItem('teacherRatings');
     
-    if (savedOption) {
-      setSelectedOption(savedOption);
-    }
-    
-    if (savedRatings) {
-      setRatings(JSON.parse(savedRatings));
-    }
+    if (savedOption) setSelectedOption(savedOption);
+    if (savedRatings) setRatings(JSON.parse(savedRatings));
   }, []);
 
-  // Handle dropdown form submission
   const handleDropdownSubmit = (event) => {
     event.preventDefault();
     localStorage.setItem('teacherSelection', selectedOption);
     alert(`Saved selection: ${selectedOption}`);
   };
 
-  // Handle rating selection change
   const handleRatingChange = (index, value) => {
     const updatedRatings = [...ratings];
     updatedRatings[index] = value;
     setRatings(updatedRatings);
   };
 
-  // Handle rating form submission
   const handleRatingSubmit = (event) => {
     event.preventDefault();
     localStorage.setItem('teacherRatings', JSON.stringify(ratings));
@@ -74,32 +72,36 @@ function TeacherPage() {
 
         <form onSubmit={handleRatingSubmit}>
           <h2>Rate Each Option:</h2>
-          <div className="rating-scale">
-            <div className="scale-labels">
-              <span>1 (Not at all)</span>
-              <span>2</span>
-              <span>3</span>
-              <span>4</span>
-              <span>5 (Significantly)</span>
-            </div>
+          <div className="scale-labels">
+            <span className="spacer"></span> {/* Spacer */}
+            <span>0 (Not at all)</span>
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4 (Significantly)</span>
+          </div>
 
-            {options.map((option, rowIndex) => (
-              <div key={rowIndex} className="rating-row">
-                <label>{option}</label>
-                {[1, 2, 3, 4, 5].map((value) => (
-                  <label key={value}>
-                    <input
-                      type="radio"
-                      name={`rating-${rowIndex}`}
-                      value={value}
-                      checked={ratings[rowIndex] === value}
-                      onChange={() => handleRatingChange(rowIndex, value)}
-                      required
-                    />
-                  </label>
-                ))}
-              </div>
-            ))}
+          {/* Rating Table */}
+          <div class="rating-table-wrapper">
+            <table class="rating-table">
+              {options.map((option, rowIndex) => (
+                <React.Fragment key={rowIndex}>
+                  <div className="rating-cell rating-label">{option}</div>
+                  {[0, 1, 2, 3, 4].map((value) => (
+                    <div key={value} className="rating-cell">
+                      <input
+                        type="radio"
+                        name={`rating-${rowIndex}`}
+                        value={value}
+                        checked={ratings[rowIndex] === value}
+                        onChange={() => handleRatingChange(rowIndex, value)}
+                        required
+                      />
+                    </div>
+                  ))}
+                </React.Fragment>
+              ))}
+            </table>
           </div>
           <button type="submit" className="button">Submit Ratings</button>
         </form>
@@ -110,3 +112,4 @@ function TeacherPage() {
 }
 
 export default TeacherPage;
+
