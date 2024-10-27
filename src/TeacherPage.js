@@ -103,7 +103,6 @@ function TeacherPage() {
           </div>
           <button type="submit" className="button">Submit Ratings</button>
         </form>
-
         <button className="button" onClick={() => navigate('/')}>Back to Home</button>
       </header>
     </div>
