@@ -42,48 +42,48 @@ function TeacherPage() {
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Welcome, Teacher!</h1>
-        <p>This is the teacher's dashboard.</p>
+    <div className="teacher-page-container">
+      <div className="teacher-page">
+        <header className="teacher-page-header">
+          <h1>Welcome, Teacher!</h1>
+          <p>This is the teacher's dashboard.</p>
 
-        {/* Dropdown selection form */}
-        <form onSubmit={handleDropdownSubmit}>
-          <label htmlFor="options">Choose Grading Interests and Values</label>
-          <select
-            id="options"
-            value={selectedOption}
-            onChange={(e) => setSelectedOption(e.target.value)}
-            required
-          >
-            <option value="" disabled>Select OSCE Type</option>
-            <option value="Abdominal Pain">Abdominal Pain</option>
-            <option value="Chest Pain">Chest Pain</option>
-            <option value="Cough Fever">Cough Fever</option>
-            <option value="GI History">GI History</option>
-            <option value="Hematemesis">Hematemesis</option>
-            <option value="Hemoptysis">Hemoptysis</option>
-            <option value="Shortness of Breath">Shortness of Breath</option>
-          </select>
-          <button type="submit" className="button">Save</button>
-        </form>
+          {/* Dropdown selection form */}
+          <form onSubmit={handleDropdownSubmit}>
+            <label htmlFor="options">Choose Grading Interests and Values</label>
+            <select
+              id="options"
+              value={selectedOption}
+              onChange={(e) => setSelectedOption(e.target.value)}
+              required
+            >
+              <option value="" disabled>Select OSCE Type</option>
+              <option value="Abdominal Pain">Abdominal Pain</option>
+              <option value="Chest Pain">Chest Pain</option>
+              <option value="Cough Fever">Cough Fever</option>
+              <option value="GI History">GI History</option>
+              <option value="Hematemesis">Hematemesis</option>
+              <option value="Hemoptysis">Hemoptysis</option>
+              <option value="Shortness of Breath">Shortness of Breath</option>
+            </select>
+            <button type="submit" className="button">Save</button>
+          </form>
 
-        <p>1. Analysis of Chest Pain</p>
+          <p>1. Analysis of Chest Pain</p>
 
-        <form onSubmit={handleRatingSubmit}>
-          <h2>Rate Each Option:</h2>
-          <div className="scale-labels">
-            <span className="spacer"></span> {/* Spacer */}
-            <span>0 (Not at all)</span>
-            <span>1</span>
-            <span>2</span>
-            <span>3</span>
-            <span>4 (Significantly)</span>
-          </div>
+          <form onSubmit={handleRatingSubmit}>
+            <h2>Rate Each Option:</h2>
+            <div className="scale-labels">
+              <span className="spacer"></span> {/* Spacer */}
+              <span>0 (Not at all)</span>
+              <span>1</span>
+              <span>2</span>
+              <span>3</span>
+              <span>4 (Significantly)</span>
+            </div>
 
-          {/* Rating Table */}
-          <div class="rating-table-wrapper">
-            <table class="rating-table">
+            {/* Rating Table */}
+            <div className="rating-table">
               {options.map((option, rowIndex) => (
                 <React.Fragment key={rowIndex}>
                   <div className="rating-cell rating-label">{option}</div>
@@ -101,15 +101,14 @@ function TeacherPage() {
                   ))}
                 </React.Fragment>
               ))}
-            </table>
-          </div>
-          <button type="submit" className="button">Submit Ratings</button>
-        </form>
-        <button className="button" onClick={() => navigate('/')}>Back to Home</button>
-      </header>
+            </div>
+            <button type="submit" className="button">Submit Ratings</button>
+          </form>
+          <button className="button" onClick={() => navigate('/')}>Back to Home</button>
+        </header>
+      </div>
     </div>
   );
 }
 
 export default TeacherPage;
-
