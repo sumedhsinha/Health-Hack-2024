@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import { getHelloMessage } from './apiService';
+import TeacherPage from './TeacherPage';
+import StudentPage from './StudentPage';
 import './App.css';
 
-function App() {
+function HomePage() {
   const [message, setMessage] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     getHelloMessage()
@@ -23,11 +27,25 @@ function App() {
         </p>
         <p className="status-message">{message ? message : 'Select an option'}</p>
         <div className="button-container">
-          <button className="button" id="teacherButton">🍎  Teacher</button>
-          <button className="button" id="studentButton">📚 Student</button>
+
+          <button className="button" onClick={() => navigate('/teacher')}>Teacher</button>
+          <button className="button" onClick={() => navigate('/student')}>Student</button>
+
         </div>
       </header>
     </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/teacher" element={<TeacherPage />} />
+        <Route path="/student" element={<StudentPage />} />
+      </Routes>
+    </Router>
   );
 }
 
