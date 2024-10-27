@@ -30,7 +30,7 @@ function StudentPage() {
         <h1 className="title">Welcome, Student!</h1> {/* First text below the logo */}
         <p className="description">This is the student’s dashboard.</p> {/* Description below the title */}
 
-        <form onSubmit={handleSubmit} style={{ width: '190%', textAlign: 'center' }}> {/* Full width for input */}
+        <form onSubmit={handleSubmit} style={{ width: '19git 0%', textAlign: 'center' }}> {/* Full width for input */}
           <textarea
             value={inputText} // Controlled input
             onChange={(e) => setInputText(e.target.value)} // Update state on input change
