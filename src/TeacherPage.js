@@ -44,6 +44,9 @@ function TeacherPage() {
   return (
     <div className="teacher-page-container">
       <div className="teacher-page">
+        {/* Image at the top with 150px margin below */}
+        <img src="/logo.png" alt="Header" className="logo" />
+
         <header className="teacher-page-header">
           <h1>Welcome, Teacher!</h1>
           <p>This is the teacher's dashboard.</p>
@@ -112,3 +115,4 @@ function TeacherPage() {
 }
 
 export default TeacherPage;
+

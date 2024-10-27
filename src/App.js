@@ -19,7 +19,7 @@ function HomePage() {
     <div className="App">
       <header className="App-header">
         <div className="logo-container">
-          <img src="logo.png" alt="Logo 1" className="logo" />      
+          <img src="logo.png" alt="Logo 1" className="logo" />
         </div>
         <h2 className="subtitle">Welcome to CureBYTES!</h2>
         <p className="description">
@@ -28,8 +28,8 @@ function HomePage() {
         <p className="status-message">{message ? message : 'Select an option'}</p>
         <div className="button-container">
 
-          <button className="button" onClick={() => navigate('/teacher')}>Teacher</button>
-          <button className="button" onClick={() => navigate('/student')}>Student</button>
+          <button className="button" onClick={() => navigate('/teacher')}>🍎 Teacher</button>
+          <button className="button" onClick={() => navigate('/student')}>📚 Student</button>
 
         </div>
       </header>

@@ -16,6 +16,18 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  .subtitle {
+    font-size: 2em; /* Adjust the size as needed */
+    font-weight: bold; /* Optional: Makes the text bold */
+  }
+
+  .logo {
+    width: 250px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  
 }
 
 /* Styles for the StudentPage component */
@@ -40,13 +52,13 @@ body {
 }
 
 .logo {
-  width: 120px;
+  width: 170px;
   height: auto;
   margin-bottom: 20px;
 }
 
 .title {
-  font-size: 3em;
+  font-size: 2em;
   font-weight: 600;
   color: white;
   margin: 0;
@@ -68,16 +80,19 @@ body {
 }
 
 .input-text {
-  width: 100%;
-  height: 300px;
+  width: 200%; /* This allows the input to fill its container */
+  max-width: none; /* Remove max-width if present */
+  height: 350px; /* Height remains the same */
   padding: 15px;
   border-radius: 5px;
   border: 1px solid #ccc;
   font-size: 1em;
   background-color: white;
   color: black;
-  resize: both;
+  resize: both; /* User can resize */
 }
+
+
 
 .button-container {
   display: flex;
@@ -108,6 +123,8 @@ body {
   font-size: 1.1rem;
 }
 
+
+
 /* TeacherPage Specific Styles */
 .teacher-page-container {
   text-align: center;
@@ -116,7 +133,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 40px;
 }
 
 .teacher-page {
@@ -139,7 +156,7 @@ body {
 /* Form Styles */
 .teacher-page form {
   margin: auto;
-  padding: 10px 20px;
+  padding: 20px 20px;
   width: 80%;
   max-width: 600px;
   border: 2px solid #007bff;
@@ -206,6 +223,10 @@ body {
   cursor: pointer;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s, transform 0.2s;
+  margin-top: 20px; /* Add this line */
+}
+.teacher-page h2 {
+  color: gray;
 }
 
 .teacher-page .button:hover {
